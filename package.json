@@ -1,0 +1,28 @@
+{
+  "name": "contact-hub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "server": "node server/server.js",
+    "server:dev": "nodemon server/server.js",
+    "client:dev": "npm run dev --prefix client",
+    "client:build": "npm run build --prefix client",
+    "client:preview": "npm run preview --prefix client",
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.1.1",
+    "concurrently": "^8.2.2",
+    "eslint": "^9.1.1",
+    "globals": "^15.1.0"
+  }
+}
