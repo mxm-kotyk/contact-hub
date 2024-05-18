@@ -3,7 +3,7 @@ import cors from "cors";
 import logger from "morgan";
 import "dotenv/config.js";
 
-import { notFound } from "./middlewares/index.js";
+import { notFound, errorHandler } from "./middlewares/index.js";
 import { contactsRouter } from "./routes/api/index.js";
 
 const app = express();
@@ -20,6 +20,8 @@ const { PORT } = process.env;
 app.use("/api/contacts", contactsRouter);
 
 app.use(notFound);
+
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
