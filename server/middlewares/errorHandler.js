@@ -4,12 +4,12 @@ const errorHandler = (err, req, res, next) => {
 
   res.status(statusCode);
   res.json({
-    status: "error",
+    status: "Error",
     statusCode,
     message,
     error:
       process.env.NODE_ENV === "development"
-        ? { stack: err.stack, ...err, timestamp: new Date() }
+        ? { stack: err.stack, ...err, timestamp: new Date().toString() }
         : undefined,
   });
   next(err);
