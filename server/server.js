@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import logger from "morgan";
+import mongoose from "mongoose";
 import "dotenv/config.js";
 
 import { notFound, errorHandler } from "./middlewares/index.js";
@@ -15,14 +16,23 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-const { PORT } = process.env;
-
 app.use("/api/contacts", contactsRouter);
 
 app.use(notFound);
 
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+const { PORT = 3000, DB_HOST } = process.env;
+
+mongoose
+  .connect(DB_HOST)
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+      console.log(`Database connection successful`);
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+    process.exit(1);
+  });
