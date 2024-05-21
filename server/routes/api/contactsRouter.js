@@ -1,28 +1,21 @@
 import express from "express";
+import * as contactController from "../../controllers/contactController/index.js";
 
 const contactsRouter = express.Router();
 
 // Get all contacts
-contactsRouter.get("/", (req, res) =>
-  res.json({ message: "Get all contacts" })
-);
+contactsRouter.get("/", contactController.getAllContacts);
 
 // Get one contact by id
-contactsRouter.get("/:id", (req, res) =>
-  res.json({ message: "Get one contact by id" })
-);
+contactsRouter.get("/:id", contactController.getOneContact);
 
 // Add contact
-contactsRouter.post("/", (req, res) => res.json({ message: "Add contact" }));
+contactsRouter.post("/", contactController.createContact);
 
 // Update contact
-contactsRouter.put("/:id", (req, res) =>
-  res.json({ message: "Update contact" })
-);
+contactsRouter.put("/:id", contactController.updateContact);
 
 // Delete contact
-contactsRouter.delete("/:id", (req, res) =>
-  res.json({ message: "Delete contact" })
-);
+contactsRouter.delete("/:id", contactController.deleteContact);
 
 export default contactsRouter;
