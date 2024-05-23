@@ -7,9 +7,7 @@ import { asyncWrapper } from "../../decorators/index.js";
 const updateContact = async (req, res) => {
   const id = req.params.id;
 
-  const result = await Contact.findByIdAndUpdate(id, req.body, {
-    returnDocument: "after",
-  });
+  const result = await Contact.findByIdAndUpdate(id, req.body);
 
   if (!result) {
     throw HttpError(
