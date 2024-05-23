@@ -1,1 +1,2 @@
-export { default as createContactJoiSchema } from "./createContactJoiSchema.js";
+export { createContactJoiSchema } from "./contactJoiSchema.js";
+export { setContactFavoriteJoiSchema } from "./contactJoiSchema.js";
