@@ -1,14 +1,10 @@
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
+import SharedLayout from "./components/SharedLayout/SharedLayout";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <div>
-        Shared Layout
-        <Outlet />
-      </div>
-    ),
+    element: <SharedLayout />,
     children: [
       {
         index: true,
