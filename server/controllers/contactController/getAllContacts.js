@@ -5,12 +5,22 @@ import { asyncWrapper } from "../../decorators/index.js";
 // GET api/contacts
 const getAllContacts = async (req, res) => {
   const result = await Contact.find(req.query);
+  const totalCount = await Contact.estimatedDocumentCount();
+  const favoritesCount = await Contact.countDocuments({
+    favorite: true,
+  });
+  console.log(totalCount);
   res.status(200);
   res.json({
     status: "Success",
     statusCode: 200,
-    data: result,
-    total: result.length,
+    data: {
+      contacts: result,
+      counts: {
+        total: totalCount,
+        favorite: favoritesCount,
+      },
+    },
   });
 };
 
