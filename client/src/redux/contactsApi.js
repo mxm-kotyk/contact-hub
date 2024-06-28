@@ -12,7 +12,7 @@ export const contactsApi = createApi({
   }),
   endpoints: (builder) => ({
     getAllContacts: builder.query({
-      query: () => "contacts",
+      query: (params) => `contacts/${params}`,
       ...transformResponses,
     }),
     getOneContact: builder.query({
